@@ -33,7 +33,7 @@ function PlayScreen() {
   const navigate = useNavigate()
   const location = useLocation()
   const userDataRecieved = location.state || {};
-  const ENDPOINT = process.env.REACT_APP_API_URL || "https://skribblay-you.onrender.com/";
+  const ENDPOINT = process.env.REACT_APP_API_URL || "https://skribbaly.onrender.com";
   const ENDPOINT_LOCAL = "http://localhost:3001/";
   useEffect(() => {
     console.log("user Data revcievd", userDataRecieved)
