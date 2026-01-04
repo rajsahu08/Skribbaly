@@ -7,17 +7,24 @@ const path = require("path");
 const dotenv = require("dotenv");
 
 const server = http.createServer(app);
+
+// Configure CORS based on environment
+const corsOrigin = process.env.CORS_ORIGIN || (process.env.NODE_ENV === "production" ? "*" : "*");
+
 const io = new Server(server, {
   pingTimeout: 60000,
   cors: {
-    // origin: "http://localhost:3000",
-    origin: "*"
+    origin: corsOrigin,
+    credentials: true
   },
   connectionStateRecovery: {},
 });
 // const port = 3001;
 
-app.use(cors());
+app.use(cors({
+  origin: corsOrigin,
+  credentials: true
+}));
 app.use(express.json());  
 dotenv.config({path:'../.env'});
 

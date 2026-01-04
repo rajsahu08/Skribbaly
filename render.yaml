@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: skribally-backend
+    env: node
+    buildCommand: npm install && npm install --prefix ./backend && npm install --prefix ./frontend && npm run build --prefix ./frontend
+    startCommand: cd backend && node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: REACT_APP_NODE_ENV
+        value: production
+
